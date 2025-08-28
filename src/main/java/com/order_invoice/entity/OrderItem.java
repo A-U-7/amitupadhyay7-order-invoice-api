@@ -31,6 +31,5 @@ public class OrderItem {
     
     @Min(value = 0, message = "Unit price must be positive")
     private double unitPrice;
-    
 
 }

@@ -18,7 +18,6 @@ public class InvoiceItem {
     private String category;
     private int quantity;
     private double unitPrice;
-
     @JsonSerialize(using = DoubleSerializer.class)
     private double lineTotal;
     

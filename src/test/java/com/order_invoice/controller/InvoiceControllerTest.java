@@ -71,7 +71,7 @@ class InvoiceControllerTest {
         var orderItem = new OrderItem(1l,"Laptop", "Electronics", 1, 1000.0);
         when(invoiceService.getOrdersByCategory(anyString())).thenReturn(List.of(orderItem));
 
-        // Act & Assert
+
         mockMvc.perform(get("/orders/category/Electronics"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].category").value("Electronics"));
