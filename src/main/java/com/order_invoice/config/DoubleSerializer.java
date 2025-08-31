@@ -16,7 +16,7 @@ public class DoubleSerializer extends JsonSerializer<Double> {
         if (value != null) {
             // Format to always show 2 decimal places
             String formatted = df.format(value);
-            gen.writeNumber(formatted); // Write as formatted string to force .00
+            gen.writeNumber(formatted);
         } else {
             gen.writeNumber("0.00");
         }
