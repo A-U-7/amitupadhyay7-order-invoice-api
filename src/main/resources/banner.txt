@@ -1,8 +1,11 @@
-${AnsiColor.BRIGHT_GREEN} ____              _                ___                     _
-${AnsiColor.BRIGHT_BLUE}  / __ \   ___    __| |  ___   _ _   / _ \   _ __   ___    __| |   ___ ___
-${AnsiColor.BRIGHT_YELLOW} / / _` | / _ \  / _` | / -_) | '_| | | | | | '_ \ / -_)  / _` |  (_-</ -_)
-${AnsiColor.BRIGHT_RED} \ \__,_| \___/  \__,_| \___| |_|   |_| |_| | .__/ \___|  \__,_|  /__/\___|${AnsiColor.DEFAULT}
+${AnsiColor.BRIGHT_GREEN}
+   ___   ___   ___   ____   _____   ____       ___   _   _  _   _   ____   __     __   ___    ____   ____
+  / _ \ | _ \ / _ \ |  _ \ | ____| |  _ \     / _ \ | | | || \ | | |  _ \  \ \   / /  / _ \  |  _ \ |  _ \
+ | | | || | | | | | || | | ||  _|   | | | |   | | | || | | ||  \| | | | | |  \ \ / /  | | | | | | | || | | |
+ | |_| || |_| | |_| || |_| || |___  | |_| |   | |_| || |_| || |\  | | |_| |   \ V /   | |_| | | |_| || |_| |
+  \___/ |____/ \___/ |____/ |_____| |____/     \___/  \___/ |_| \_| |____/     \_/     \___/  |____/ |____/
 
-${AnsiColor.BRIGHT_CYAN} ORDER INVOICE SYSTEM
-${AnsiColor.BRIGHT_WHITE} ${application.title} ${application.version}
-${AnsiColor.BRIGHT_MAGENTA}  Powered by Spring Boot ${spring-boot.version}${AnsiColor.DEFAULT}
+${AnsiColor.DEFAULT}
+
+${AnsiColor.BRIGHT_RED} Application : ${application.title} ${application.version}
+ Powered by Spring Boot ${spring-boot.version}${AnsiColor.DEFAULT}
