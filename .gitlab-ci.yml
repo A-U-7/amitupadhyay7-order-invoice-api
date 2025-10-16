@@ -1,0 +1,74 @@
+stages:
+  - build
+  - test
+  - package
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+  MAVEN_CLI_OPTS: "--batch-mode --errors --fail-at-end --show-version"
+
+
+cache:
+  key:
+    files:
+      - pom.xml
+  paths:
+    - .m2/repository/
+    - target/
+
+
+build:
+  stage: build
+  image: openjdk:21-jdk
+  script:
+    - chmod +x ./mvnw ./mvnw.cmd
+    - ./mvnw $MAVEN_CLI_OPTS compile
+  artifacts:
+    paths:
+      - target/classes/
+    expire_in: 1 hour
+    when: on_success
+
+
+test:
+  stage: test
+  image: openjdk:21-jdk
+  script:
+    - chmod +x ./mvnw ./mvnw.cmd
+    - ./mvnw $MAVEN_CLI_OPTS test
+  artifacts:
+    paths:
+      - target/surefire-reports/
+      - target/site/jacoco/
+    reports:
+      junit:
+        - target/surefire-reports/TEST-*.xml
+      coverage_report:
+        coverage_format: jacoco
+        path: target/site/jacoco/jacoco.xml
+    expire_in: 1 week
+    when: always
+  coverage: '/Branch coverage: \d+\.\d+%/'
+  only:
+    - merge_requests
+    - main
+    - develop
+
+
+package:
+  stage: package
+  image: openjdk:21-jdk
+  script:
+    - chmod +x ./mvnw ./mvnw.cmd
+    - ./mvnw $MAVEN_CLI_OPTS clean package -DskipTests
+  artifacts:
+    paths:
+      - target/*.jar
+    expire_in: 1 month
+    when: on_success
+  only:
+    - main
+    - develop
+    - tags
+
+
